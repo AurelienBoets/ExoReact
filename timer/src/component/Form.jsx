@@ -7,6 +7,7 @@ const Form = (props) => {
     e.preventDefault();
     props.addTimer(time, name);
   };
+
   return (
     <>
       <form onSubmit={add}>

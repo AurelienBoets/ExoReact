@@ -9,10 +9,17 @@ function App() {
 
   const addTimer = (time, name) => {
     if (nbTimer.current < 5) {
-      setTimer([...timer, { name: name, time: time }]);
       ++nbTimer.current;
+      setTimer([
+        ...timer,
+        {
+          time: time,
+          name: name,
+        },
+      ]);
     }
   };
+
   return (
     <div>
       <Form addTimer={addTimer} nbTimer={nbTimer} />
