@@ -46,15 +46,26 @@ const TaskList = () => {
           {task.map((t) => (
             <li className="list-group-item" key={t.id}>
               {t.name}
-              <span className="bg-warning rounded text-center p-1 ms-5">
-                <i
-                  className="bi bi-pencil-square"
-                  onClick={() => navigate(`/form?mode=edit&id=${t.id}`)}
-                ></i>
+              <span
+                className="btn btn-info p-1 ms-5"
+                onClick={() => {
+                  navigate(`/task/${t.id}`);
+                }}
+              >
+                <i className="bi bi-eye"></i> Détails
+              </span>
+              <span
+                className="btn btn-warning   p-1 ms-3"
+                onClick={() => navigate(`/form?mode=edit&id=${t.id}`)}
+              >
+                <i className="bi bi-pencil-square"></i>
                 Modifier
               </span>
-              <span className="bg-danger rounded text-center p-1 ms-3">
-                <i className="bi bi-trash" onClick={() => deleteTask(t.id)}></i>
+              <span
+                className="btn btn-danger  text-dark p-1 ms-3"
+                onClick={() => deleteTask(t.id)}
+              >
+                <i className="bi bi-trash"></i>
                 Supprimer
               </span>
             </li>

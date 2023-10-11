@@ -1,14 +1,9 @@
 {
   "task": [
     {
-      "name": "Faire les courses",
-      "description": "Test",
-      "id": 1
-    },
-    {
       "name": "Test",
       "description": "Lorem ipsum",
-      "id": 2
+      "id": 1
     }
   ]
 }
