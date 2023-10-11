@@ -1,0 +1,68 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
+import axios from "axios";
+
+const TaskList = () => {
+  const [task, setTask] = useState([]);
+  const navigate = useNavigate();
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/task")
+      .then((resp) => {
+        setTask(resp.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
+
+  const deleteTask = (id) => {
+    axios
+      .delete(`http://localhost:5000/task/${id}`)
+      .then(() => {
+        setTask(task.filter((t) => id !== t.id));
+        console.log(task);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  return (
+    <main>
+      <div className="card">
+        <div className="card-header">
+          <h4 className="d-inline">Todo-list</h4>
+          <span
+            className="btn btn-primary ms-5 mb-1"
+            onClick={() => {
+              navigate("/form");
+            }}
+          >
+            Ajouter
+          </span>
+        </div>
+        <ul className="list-group list-group-flush">
+          {task.map((t) => (
+            <li className="list-group-item" key={t.id}>
+              {t.name}
+              <span className="bg-warning rounded text-center p-1 ms-5">
+                <i
+                  className="bi bi-pencil-square"
+                  onClick={() => navigate(`/form?mode=edit&id=${t.id}`)}
+                ></i>
+                Modifier
+              </span>
+              <span className="bg-danger rounded text-center p-1 ms-3">
+                <i className="bi bi-trash" onClick={() => deleteTask(t.id)}></i>
+                Supprimer
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </main>
+  );
+};
+
+export default TaskList;
