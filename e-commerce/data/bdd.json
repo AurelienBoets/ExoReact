@@ -1,0 +1,50 @@
+{
+  "person": [
+    {
+      "id": 1,
+      "nom": "Jacques",
+      "prenom": "Jean",
+      "mail": "admin.admin@mail.fr",
+      "mdp": "admin",
+      "role": "ADMIN"
+    }
+  ],
+  "article": [
+    {
+      "name": "Un article",
+      "description": "Un article pas cher",
+      "price": 10,
+      "id": 1
+    },
+    {
+      "name": "Un article",
+      "description": "Un article pas cher",
+      "price": 10,
+      "id": 2
+    },
+    {
+      "name": "Un article",
+      "description": "Un article pas cher",
+      "price": 10,
+      "id": 3
+    },
+    {
+      "name": "Un article",
+      "description": "Un article pas cher",
+      "price": 10,
+      "id": 4
+    },
+    {
+      "name": "Un article",
+      "description": "Un article pas cher",
+      "price": 10,
+      "id": 5
+    },
+    {
+      "name": "Un article",
+      "description": "Un article pas cher",
+      "price": 10,
+      "id": 6
+    }
+  ]
+}
