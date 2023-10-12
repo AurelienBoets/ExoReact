@@ -7,14 +7,20 @@ const Home = () => {
   const navigate = useNavigate();
 
   const addArticle = (obj) => {
-    const articleList = localStorage.getItem("cart");
+    const articleList = JSON.parse(localStorage.getItem("cart"));
     if (!articleList) {
+      obj.quantity = 1;
       localStorage.setItem("cart", JSON.stringify([obj]));
+    } else if (articleList.find((a) => obj.id === a.id)) {
+      articleList.forEach((element) => {
+        if (element.id === obj.id) {
+          ++element.quantity;
+        }
+      });
+      localStorage.setItem("cart", JSON.stringify(articleList));
     } else {
-      localStorage.setItem(
-        "cart",
-        JSON.stringify([...JSON.parse(articleList), obj])
-      );
+      obj.quantity = 1;
+      localStorage.setItem("cart", JSON.stringify([...articleList, obj]));
     }
   };
 

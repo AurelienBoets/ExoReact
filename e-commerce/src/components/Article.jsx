@@ -8,14 +8,24 @@ const Article = () => {
   const param = useParams();
   const id = param.id;
   const addArticle = () => {
-    const articleList = localStorage.getItem("cart");
+    const articleList = JSON.parse(localStorage.getItem("cart"));
     if (!articleList) {
+      let newArticle = article;
+      newArticle.quantity = 1;
+      setArticle(newArticle);
       localStorage.setItem("cart", JSON.stringify([article]));
+    } else if (articleList.find((a) => article.id === a.id)) {
+      articleList.forEach((element) => {
+        if (element.id === article.id) {
+          ++element.quantity;
+        }
+      });
+      localStorage.setItem("cart", JSON.stringify(articleList));
     } else {
-      localStorage.setItem(
-        "cart",
-        JSON.stringify([...JSON.parse(articleList), article])
-      );
+      let newArticle = article;
+      newArticle.quantity = 1;
+      setArticle(newArticle);
+      localStorage.setItem("cart", JSON.stringify([...articleList, article]));
     }
   };
   useEffect(() => {

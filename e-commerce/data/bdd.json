@@ -17,34 +17,10 @@
       "id": 1
     },
     {
-      "name": "Un article",
-      "description": "Un article pas cher",
-      "price": 10,
-      "id": 2
-    },
-    {
-      "name": "Un article",
-      "description": "Un article pas cher",
-      "price": 10,
-      "id": 3
-    },
-    {
-      "name": "Un article",
-      "description": "Un article pas cher",
-      "price": 10,
-      "id": 4
-    },
-    {
-      "name": "Un article",
-      "description": "Un article pas cher",
-      "price": 10,
-      "id": 5
-    },
-    {
-      "name": "Un article",
-      "description": "Un article pas cher",
-      "price": 10,
-      "id": 6
+      "name": "Test",
+      "description": "Ceci est un test",
+      "price": "1",
+      "id": 7
     }
   ]
 }

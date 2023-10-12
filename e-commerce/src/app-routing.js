@@ -1,10 +1,21 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, redirect } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Panier from "./components/Panier";
 import Article from "./components/Article";
 import AddArticle from "./components/AddArticle";
+
+const isAdmin = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  if (!user) {
+    return redirect("/");
+  } else if (user.role === "ADMIN") {
+    return true;
+  } else {
+    return redirect("/");
+  }
+};
 
 const router = createBrowserRouter([
   {
@@ -29,6 +40,7 @@ const router = createBrowserRouter([
       {
         path: "/article/add",
         element: <AddArticle />,
+        loader: () => isAdmin(),
       },
     ],
   },

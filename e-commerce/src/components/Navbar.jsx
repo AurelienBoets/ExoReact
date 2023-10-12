@@ -9,12 +9,14 @@ const Navbar = () => {
   const logout = () => {
     localStorage.removeItem("user");
     setPerson("");
+    navigate("/");
   };
 
   useEffect(() => {
     if (localStorage.getItem("user")) {
       setPerson(JSON.parse(localStorage.getItem("user")));
     }
+    console.log(person);
   }, [localStorage.getItem("user")]);
 
   return (
@@ -26,11 +28,17 @@ const Navbar = () => {
             <ul
               className="navbar-nav me-auto mb-2 mb-lg-0"
               style={{ cursor: "pointer" }}
-              onClick={() => navigate("/")}
             >
-              <li className="nav-item">Accueil</li>
+              <li className="nav-item" onClick={() => navigate("/")}>
+                Accueil
+              </li>
               {person.role === "ADMIN" ? (
-                <li className="nav-item ms-4">Ajouter article</li>
+                <li
+                  className="nav-item ms-4"
+                  onClick={() => navigate("/article/add")}
+                >
+                  Ajouter article
+                </li>
               ) : (
                 ""
               )}

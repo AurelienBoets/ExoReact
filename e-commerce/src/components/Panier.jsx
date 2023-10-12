@@ -3,6 +3,43 @@ import { useState } from "react";
 
 const Panier = () => {
   const [cart, setCart] = useState([]);
+
+  const deleteArticle = (id) => {
+    let newStorage = JSON.parse(localStorage.getItem("cart"));
+    newStorage = newStorage.filter((storage) => storage.id !== id);
+    localStorage.setItem("cart", JSON.stringify(newStorage));
+  };
+
+  const addArticle = (id) => {
+    let newStorage = JSON.parse(localStorage.getItem("cart"));
+    newStorage.forEach((storage) => {
+      if (storage.id === id) {
+        ++storage.quantity;
+      }
+    });
+    localStorage.setItem("cart", JSON.stringify(newStorage));
+    setCart(JSON.parse(localStorage.getItem("cart")));
+  };
+
+  const removeArticle = (id) => {
+    let newStorage = JSON.parse(localStorage.getItem("cart"));
+    let isDelete = false;
+    newStorage.forEach((storage) => {
+      if (storage.id === id) {
+        if (!storage.quantity > 1) {
+          deleteArticle(id);
+          isDelete = true;
+        }
+        --storage.quantity;
+      }
+    });
+    console.log(newStorage);
+    if ((isDelete = false)) {
+      localStorage.setItem("cart", JSON.stringify(newStorage));
+      setCart(JSON.parse(localStorage.getItem("cart")));
+    }
+  };
+
   useEffect(() => {
     if (localStorage.getItem("cart")) {
       setCart(JSON.parse(localStorage.getItem("cart")));
@@ -31,13 +68,26 @@ const Panier = () => {
             <tr key={index}>
               <td>{c.name}</td>
               <td>{c.price} €</td>
-              <td></td>
+              <td>{c.quantity}</td>
               <td width="450px">
-                <span className="btn btn-warning">-1</span>
-                <span className="btn btn-danger ms-2">
+                <span
+                  className="btn btn-warning"
+                  onClick={() => removeArticle(c.id)}
+                >
+                  -1
+                </span>
+                <span
+                  className="btn btn-danger ms-2"
+                  onClick={() => deleteArticle(c.id)}
+                >
                   <i className="bi bi-trash"></i>
                 </span>
-                <span className="btn btn-warning ms-2">+1</span>
+                <span
+                  className="btn btn-warning ms-2"
+                  onClick={() => addArticle(c.id)}
+                >
+                  +1
+                </span>
               </td>
             </tr>
           ))}
