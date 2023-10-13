@@ -8,6 +8,7 @@ const Panier = () => {
     let newStorage = JSON.parse(localStorage.getItem("cart"));
     newStorage = newStorage.filter((storage) => storage.id !== id);
     localStorage.setItem("cart", JSON.stringify(newStorage));
+    setCart(newStorage);
   };
 
   const addArticle = (id) => {
@@ -26,15 +27,16 @@ const Panier = () => {
     let isDelete = false;
     newStorage.forEach((storage) => {
       if (storage.id === id) {
-        if (!storage.quantity > 1) {
+        if (storage.quantity === 1) {
           deleteArticle(id);
           isDelete = true;
+        } else {
+          --storage.quantity;
         }
-        --storage.quantity;
       }
     });
     console.log(newStorage);
-    if ((isDelete = false)) {
+    if (isDelete === false) {
       localStorage.setItem("cart", JSON.stringify(newStorage));
       setCart(JSON.parse(localStorage.getItem("cart")));
     }
