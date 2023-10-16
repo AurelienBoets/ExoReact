@@ -61,9 +61,10 @@ const Form = () => {
             Prix
           </label>
           <input
-            type="text"
+            type="number"
             className="form-control"
             name="price"
+            step={0.01}
             ref={price}
             defaultValue={priceValue}
           />
