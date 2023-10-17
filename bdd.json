@@ -1,0 +1,17 @@
+{
+  "recipe": [
+    {
+      "id": 1,
+      "title": "test",
+      "instructions": "test",
+      "cookTime": 15,
+      "prepTime": 25,
+      "ingredients": [
+        {
+          "id": 1,
+          "name": "ingredient test"
+        }
+      ]
+    }
+  ]
+}

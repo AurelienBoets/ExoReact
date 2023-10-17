@@ -25,8 +25,12 @@ const RecipeSlice = createSlice({
         (recipe) => recipe.id !== action.payload
       );
     },
+    initRecipe: (state, action) => {
+      state.recipes = action.payload;
+    },
   },
 });
 
-export const { addRecipe, editRecipe, removeRecipe } = RecipeSlice.actions;
+export const { addRecipe, editRecipe, removeRecipe, initRecipe } =
+  RecipeSlice.actions;
 export default RecipeSlice.reducer;

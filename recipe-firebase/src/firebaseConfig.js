@@ -23,6 +23,7 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
 export const DATABASE_URL = firebaseConfig.databaseURL;
-export const SIGN_IN_URL = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key=${firebaseConfig.apiKey}`;
+export const RECIPE_URL = DATABASE_URL + "/recipe";
+
+export const SIGN_IN_URL = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${firebaseConfig.apiKey}`;
 export const SIGN_UP_URL = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${firebaseConfig.apiKey}`;
-export const API_URL = `https://${firebaseConfig.projectId}.firebaseio.com/`;

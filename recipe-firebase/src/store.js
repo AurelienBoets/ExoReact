@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import AuthSlice from "./components/AuthSlice";
 import RecipeSlice from "./components/RecipeSlice";
+import AuthSlice from "./components/AuthSlice";
 
 export default configureStore({
   reducer: {
-    auth: AuthSlice,
     recipe: RecipeSlice,
+    auth: AuthSlice,
   },
 });
